@@ -1,5 +1,9 @@
+import Homework_15 from "homeworks/Homework_15/Homework_15"
+
 function App() {
-  return <>Redux App</>
+  return <>Redux App
+  <Homework_15/>
+  </>
 }
 
 export default App
