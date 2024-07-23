@@ -1,5 +1,5 @@
 function App() {
-  return <> React Redux project</>
+  return <>Redux App</>
 }
 
 export default App
