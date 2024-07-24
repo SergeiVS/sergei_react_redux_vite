@@ -1,10 +1,10 @@
-import styled from "@emotion/styled/macro"
+import styled from "@emotion/styled"
 
-import { PageWrapperCss } from "styles/standartStyles"
 
 export const PageWrapper_HW_15 = styled.div`
-  ${PageWrapperCss}
+  display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 25 px;
   align-items: center;
   justify-content: center;
