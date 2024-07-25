@@ -21,4 +21,11 @@ export const feedbackSlice = createSlice({
       state.dislikes = 0
     }),
   }),
+  selectors: {
+    selectLikes: (likes: FeedbackSliceState) => likes.likes,
+    selectDislikes: (dislikes: FeedbackSliceState) => dislikes.dislikes,
+  },
 })
+
+export const feedbackSliceActions = feedbackSlice.actions
+export const feedbackSliceSelectors = feedbackSlice.selectors
