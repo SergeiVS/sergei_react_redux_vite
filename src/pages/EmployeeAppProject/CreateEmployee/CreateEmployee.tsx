@@ -1,6 +1,13 @@
-import CreateEmployeeForm from "pages/EmployeeAppProject/components/CreateEmployeeForm/CreateEmployeeForm";
+import CreateEmployeeForm from "pages/EmployeeAppProject/components/CreateEmployeeForm/CreateEmployeeForm"
+import { PageWrapper } from "./styles"
 
 function CreateEmployee() {
-  return (<CreateEmployeeForm />);
+
+  return (
+    <PageWrapper>
+      <CreateEmployeeForm />
+    </PageWrapper>
+  )
+
 }
-export default CreateEmployee;
+export default CreateEmployee
