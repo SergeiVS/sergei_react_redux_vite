@@ -2,12 +2,10 @@ import CreateEmployeeForm from "pages/EmployeeAppProject/components/CreateEmploy
 import { PageWrapper } from "./styles"
 
 function CreateEmployee() {
-
   return (
     <PageWrapper>
       <CreateEmployeeForm />
     </PageWrapper>
   )
-
 }
 export default CreateEmployee

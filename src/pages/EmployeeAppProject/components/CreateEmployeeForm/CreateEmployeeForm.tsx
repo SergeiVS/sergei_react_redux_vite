@@ -20,7 +20,6 @@ function CreateEmployeeForm() {
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
 
   const validationSchema = Yup.object().shape({
-    
     name: Yup.string()
       .required("Name field is required")
       .min(2, "Name field should contain minimum 2 symbols")
