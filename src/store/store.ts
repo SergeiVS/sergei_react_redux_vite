@@ -1,7 +1,7 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { counterSlice } from "store/redux/counter/counterSlice"
-import { feedbackSlice } from "./redux/feedback/feedbackSlyces"
+import { feedbackSlice } from "./redux/feedback/feedbackSlyce"
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
 const rootReducer = combineSlices(counterSlice, feedbackSlice)

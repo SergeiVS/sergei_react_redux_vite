@@ -1,17 +1,18 @@
-import { useAppDispatch } from "store/hooks"
-import { useSelector } from "react-redux"
-
-import Feedback from "components/Feedback/Feedback"
-import { PageWrapperHW16 } from "./styles"
+import { useAppDispatch, useAppSelector } from "store/hooks"
 import {
   feedbackSliceActions,
   feedbackSliceSelectors,
-} from "store/redux/feedback/feedbackSlyces"
+} from "store/redux/feedback/feedbackSlyce"
+
+
+import Feedback from "components/Feedback/Feedback"
+import { PageWrapperHW16 } from "./styles"
 
 function Homework_16() {
   const dispatch = useAppDispatch()
-  const likes = useSelector(feedbackSliceSelectors.selectLikes)
-  const dislikes = useSelector(feedbackSliceSelectors.selectDislikes)
+  const likes = useAppSelector(feedbackSliceSelectors.selectLikes)
+  const dislikes = useAppSelector(feedbackSliceSelectors.selectDislikes)
+
   const onLikes = () => {
     dispatch(feedbackSliceActions.addLikes())
   }
@@ -21,6 +22,7 @@ function Homework_16() {
   const resetResults = () => {
     dispatch(feedbackSliceActions.resetResults())
   }
+  
   return (
     <PageWrapperHW16>
       <Feedback
