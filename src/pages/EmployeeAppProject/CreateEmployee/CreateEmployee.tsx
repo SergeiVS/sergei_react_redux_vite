@@ -1,6 +1,6 @@
 import CreateEmployeeForm from "pages/EmployeeAppProject/components/CreateEmployeeForm/CreateEmployeeForm";
 
 function CreateEmployee() {
-  return <CreateEmployeeForm />;
+  return (<CreateEmployeeForm />);
 }
 export default CreateEmployee;
