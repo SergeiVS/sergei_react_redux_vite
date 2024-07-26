@@ -15,7 +15,7 @@ function Employees() {
     employees.map((emlpoyeeObj: Employee) => {
       return (
         <PageWrapper>
-          <EmployeesWrapper>
+        <EmployeesWrapper>
         <Employees_Card
           key={v4()}
           name={emlpoyeeObj.name}
