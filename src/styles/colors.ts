@@ -9,7 +9,7 @@ export interface COLORS {
 
 export const colors: COLORS = {
   PRIMARY: "rgb(26, 35, 53)",
-  ERROR: "#D04648",
+  ERROR: "#CF0000",
   PRIMARY_BLUE: "#1f27f5",
   PLACEHOLDER: "#6f6f6f",
   LABEL: "#615c5c",
