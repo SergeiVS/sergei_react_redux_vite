@@ -44,7 +44,7 @@ function CreateEmployeeForm() {
       jobPosition: "",
     },
     validationSchema: validationSchema,
-    validateOnChange: true,
+    validateOnChange: false,
 
     onSubmit: (values, helpers) => {
       employeeDataContext.setEmployees((prevValue: Employee[]) => {
