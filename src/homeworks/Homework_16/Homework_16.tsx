@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 import { useAppDispatch } from "store/hooks"
 import { useSelector } from "react-redux"
 
@@ -38,4 +35,3 @@ function Homework_16() {
 }
 
 export default Homework_16
->>>>>>> edeabef7db45f12e39b6aded5abb4031806fa188
