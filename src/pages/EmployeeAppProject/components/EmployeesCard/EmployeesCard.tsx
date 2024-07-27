@@ -1,9 +1,15 @@
 import Button from "components/Button/Button";
-
-import { EmployeesCard, TextDiv, TextLabel, TextContent } from "./styles";
 import { Employee } from "pages/EmployeeAppProject/Layout_Team_1/types";
 
+import { EmployeesCard, TextDiv, TextLabel, TextContent } from "./styles";
+import { useDispatch } from "react-redux";
+import { employeesAppSliceAction } from "store/redux/employees/employeesSlice";
+
 function Employees_Card({ name, surName, age, jobPosition }: Employee) {
+  
+  const dispach = useDispatch()
+  const deleteCard = employeesAppSliceAction.deleteCard
+  
   return (
     <EmployeesCard>
       <TextDiv>
