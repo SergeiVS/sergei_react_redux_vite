@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import EmployeeAppContextProvider from "pages/EmployeeAppProject/contexts/EmployeeAppContext";
+// import EmployeeAppContextProvider from "pages/EmployeeAppProject/contexts/EmployeeAppContext";
 
 import {
   LayoutWrapper,
@@ -21,7 +21,7 @@ function Layout_Team_1({ children }: LayoutProps) {
   };
 
   return (
-    <EmployeeAppContextProvider>
+    // <EmployeeAppContextProvider>
       <LayoutWrapper>
         <Header>
           <Logo onClick={goToHomePage}>
@@ -53,7 +53,7 @@ function Layout_Team_1({ children }: LayoutProps) {
         </Header>
         <Main>{children}</Main>
       </LayoutWrapper>
-    </EmployeeAppContextProvider>
+    // </EmployeeAppContextProvider>
   );
 }
 

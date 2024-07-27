@@ -1,6 +1,6 @@
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { Alert } from "@mui/material"
 
 import Button from "components/Button/Button"
@@ -13,9 +13,10 @@ import {
 } from "./styles"
 import { Employee } from "pages/EmployeeAppProject/Layout_Team_1/types"
 import Modal from "components/Modal/Modal"
+import { employeesAppSliceAction } from "store/redux/employees/employeesSlice"
+import { useDispatch } from "react-redux"
 
 function CreateEmployeeForm() {
-
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
 
   const validationSchema = Yup.object().shape({
@@ -35,6 +36,10 @@ function CreateEmployeeForm() {
       "Job Position field should contain maximum 30 symobols",
     ),
   })
+
+  const dispach = useDispatch()
+  const createEmployee = employeesAppSliceAction.createEmployee
+
   const formik = useFormik<Employee>({
     initialValues: {
       name: "",
@@ -46,7 +51,8 @@ function CreateEmployeeForm() {
     validateOnChange: false,
 
     onSubmit: (values, helpers) => {
-    //some function from store
+      //some function from store - дописана ниже 
+      dispach(createEmployee(values))
       helpers.resetForm()
       console.log(values)
       setModalOpen(true)
