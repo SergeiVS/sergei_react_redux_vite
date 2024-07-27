@@ -3,7 +3,6 @@ import { ReactNode, useContext } from "react"
 import Employees_Card from "../components/EmployeesCard/EmployeesCard"
 import Button from "components/Button/Button"
 
-import { EmployeeAppContext } from "../contexts/EmployeeAppContext"
 import { PageWrapper, EmployeesWrapper, DeleteButtonControl } from "./styles"
 import { Employee } from "../Layout_Team_1/types"
 import { v4 } from "uuid"
@@ -15,10 +14,9 @@ import { useAppSelector } from "store/hooks"
 import { useDispatch } from "react-redux"
 
 function Employees() {
-  const { employees } = useContext(EmployeeAppContext)
+  // const { employees } = useContext(EmployeeAppContext)
   const dispach = useDispatch()
   const createEmployees = useAppSelector(employeesAppSliceSelectors.employees)
-
 
   const getEmployeesCards = (employees: Employee[]): ReactNode[] =>
     employees.map((emlpoyeeObj: Employee) => {
@@ -33,13 +31,13 @@ function Employees() {
       )
     })
 
-    const onClick = () => {
-      dispach(employeesAppSliceAction.deleteAllCards())
-    }
+  const onClick = () => {
+    dispach(employeesAppSliceAction.deleteAllCards())
+  }
 
   return (
     <PageWrapper>
-      <EmployeesWrapper>{getEmployeesCards(employees)}</EmployeesWrapper>
+      <EmployeesWrapper>{getEmployeesCards(createEmployees)}</EmployeesWrapper>
       <DeleteButtonControl>
         <Button name="Remove all employees" onClick={onClick} isRed={true} />
       </DeleteButtonControl>

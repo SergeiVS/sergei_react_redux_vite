@@ -1,10 +1,14 @@
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { Alert } from "@mui/material"
 
 import Button from "components/Button/Button"
 import Input from "components/Input/Input"
+import {
+  employeesAppSliceAction,
+  employeesAppSliceSelectors,
+} from "store/redux/employees/employeesSlice"
 
 import {
   UserDataFormContainer,
@@ -13,10 +17,13 @@ import {
 } from "./styles"
 import { Employee } from "pages/EmployeeAppProject/Layout_Team_1/types"
 import Modal from "components/Modal/Modal"
+import { useAppDispatch } from "store/hooks"
 
 function CreateEmployeeForm() {
-
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
+
+  const dispath = useAppDispatch()
+  const createEmployee = employeesAppSliceAction.createEmployee
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -46,7 +53,7 @@ function CreateEmployeeForm() {
     validateOnChange: false,
 
     onSubmit: (values, helpers) => {
-    //some function from store
+      dispath(createEmployee(values))
       helpers.resetForm()
       console.log(values)
       setModalOpen(true)
