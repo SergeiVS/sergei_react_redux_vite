@@ -5,7 +5,6 @@ import { Alert } from "@mui/material"
 
 import Button from "components/Button/Button"
 import Input from "components/Input/Input"
-import { EmployeeAppContext } from "pages/EmployeeAppProject/contexts/EmployeeAppContext"
 
 import {
   UserDataFormContainer,
@@ -16,7 +15,7 @@ import { Employee } from "pages/EmployeeAppProject/Layout_Team_1/types"
 import Modal from "components/Modal/Modal"
 
 function CreateEmployeeForm() {
-  const employeeDataContext = useContext(EmployeeAppContext)
+
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
 
   const validationSchema = Yup.object().shape({
@@ -47,9 +46,7 @@ function CreateEmployeeForm() {
     validateOnChange: false,
 
     onSubmit: (values, helpers) => {
-      employeeDataContext.setEmployees((prevValue: Employee[]) => {
-        return [...prevValue, values]
-      })
+    //some function from store
       helpers.resetForm()
       console.log(values)
       setModalOpen(true)
