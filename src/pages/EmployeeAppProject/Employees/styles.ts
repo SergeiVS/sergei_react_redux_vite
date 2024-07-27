@@ -1,5 +1,11 @@
 import styled from "@emotion/styled";
 
+export const PageWrapper = styled.div`
+display: flex;
+flex-direction: column;
+gap: 60px;
+`
+
 export const EmployeesWrapper = styled.div`
   display: flex;
   flex: 1;
@@ -8,3 +14,10 @@ export const EmployeesWrapper = styled.div`
   justify-content: center;
   gap: 15px;
 `;
+
+
+export const DeleteButtonControl  =styled.div`
+display: flex;
+width: 700px;
+height: 70px;
+`
