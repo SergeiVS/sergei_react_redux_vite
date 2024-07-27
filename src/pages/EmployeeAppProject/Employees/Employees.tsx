@@ -7,35 +7,44 @@ import { EmployeeAppContext } from "../contexts/EmployeeAppContext"
 import { PageWrapper, EmployeesWrapper, DeleteButtonControl } from "./styles"
 import { Employee } from "../Layout_Team_1/types"
 import { v4 } from "uuid"
+import {
+  employeesAppSliceAction,
+  employeesAppSliceSelectors,
+} from "store/redux/employees/employeesSlice"
+import { useAppSelector } from "store/hooks"
+import { useDispatch } from "react-redux"
 
 function Employees() {
   const { employees } = useContext(EmployeeAppContext)
+  const dispach = useDispatch()
+  const createEmployees = useAppSelector(employeesAppSliceSelectors.employees)
+
 
   const getEmployeesCards = (employees: Employee[]): ReactNode[] =>
     employees.map((emlpoyeeObj: Employee) => {
       return (
-        <PageWrapper>
-          <EmployeesWrapper>
-            <Employees_Card
-              key={v4()}
-              name={emlpoyeeObj.name}
-              surName={emlpoyeeObj.surName}
-              age={emlpoyeeObj.age}
-              jobPosition={emlpoyeeObj.jobPosition}
-            />
-          </EmployeesWrapper>
-          <DeleteButtonControl>
-            <Button
-              name="Remove all employees"
-              onClick={() => {}}
-              isRed={true}
-            />
-          </DeleteButtonControl>
-        </PageWrapper>
+        <Employees_Card
+          key={v4()}
+          name={emlpoyeeObj.name}
+          surName={emlpoyeeObj.surName}
+          age={emlpoyeeObj.age}
+          jobPosition={emlpoyeeObj.jobPosition}
+        />
       )
     })
 
-  return <>{getEmployeesCards(employees)}</>
+    const onClick = () => {
+      dispach(employeesAppSliceAction.deleteAllCards())
+    }
+
+  return (
+    <PageWrapper>
+      <EmployeesWrapper>{getEmployeesCards(employees)}</EmployeesWrapper>
+      <DeleteButtonControl>
+        <Button name="Remove all employees" onClick={onClick} isRed={true} />
+      </DeleteButtonControl>
+    </PageWrapper>
+  )
 }
 
 export default Employees
