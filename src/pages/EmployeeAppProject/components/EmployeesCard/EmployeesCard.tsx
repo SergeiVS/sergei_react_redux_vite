@@ -1,36 +1,38 @@
-import Button from "components/Button/Button";
-import { Employee } from "pages/EmployeeAppProject/Layout_Team_1/types";
+import { useDispatch } from "react-redux"
 
-import { EmployeesCard, TextDiv, TextLabel, TextContent } from "./styles";
-import { useDispatch } from "react-redux";
-import { employeesAppSliceAction } from "store/redux/employees/employeesSlice";
+import Button from "components/Button/Button"
+import { employeesAppSliceAction } from "store/redux/employees/employeesSlice"
 
-function Employees_Card({ name, surName, age, jobPosition }: Employee) {
-  
-  const dispach = useDispatch()
-  const deleteCard = employeesAppSliceAction.deleteCard
-  
+import { EmployeesCard, TextDiv, TextLabel, TextContent } from "./styles"
+import { EmployeeCardProps } from "./types"
+
+function Employees_Card({ employee }: EmployeeCardProps) {
+  const dispatch = useDispatch()
+  const deleteCard = () => {
+    dispatch(employeesAppSliceAction.deleteCard(employee))
+  }
+
   return (
     <EmployeesCard>
       <TextDiv>
         <TextLabel>Name</TextLabel>
-        <TextContent>{name}</TextContent>
+        <TextContent>{employee.name}</TextContent>
       </TextDiv>
       <TextDiv>
         <TextLabel>Surname</TextLabel>
-        <TextContent>{surName}</TextContent>
+        <TextContent>{employee.surName}</TextContent>
       </TextDiv>
       <TextDiv>
         <TextLabel>Age</TextLabel>
-        <TextContent>{age}</TextContent>
+        <TextContent>{employee.age}</TextContent>
       </TextDiv>
       <TextDiv>
         <TextLabel>Job Position</TextLabel>
-        <TextContent>{jobPosition}</TextContent>
+        <TextContent>{employee.jobPosition}</TextContent>
       </TextDiv>
-      <Button name="Delete" isRed={true} onClick={()=>{}}/>
+      <Button name="Delete" isRed={true} onClick={deleteCard} />
     </EmployeesCard>
-  );
+  )
 }
 
-export default Employees_Card;
+export default Employees_Card

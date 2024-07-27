@@ -17,34 +17,35 @@ import { useDispatch } from "react-redux"
 function Employees() {
   // const { employees } = useContext(EmployeeAppContext)
   const dispach = useDispatch()
+
   const createEmployees = useAppSelector(employeesAppSliceSelectors.employees)
 
   const deleteAllCards = () => {
     dispach(employeesAppSliceAction.deleteAllCards())
   }
 
-  // const createEmployee = () => {
-  //   dispach(employeesAppSliceAction.createEmployee(employee: Employee))
-  // }
-
   const getEmployeesCards = (employees: Employee[]): ReactNode[] =>
     employees.map((emlpoyeeObj: Employee) => {
-      return (
-        <Employees_Card
-          key={v4()}
-          name={emlpoyeeObj.name}
-          surName={emlpoyeeObj.surName}
-          age={emlpoyeeObj.age}
-          jobPosition={emlpoyeeObj.jobPosition}
-        />
-      )
+      return <Employees_Card key={v4()} employee={emlpoyeeObj} />
     })
+
+  let isEmployeesExisting: boolean =
+    useAppSelector(employeesAppSliceSelectors.employees).length !== 0
+
+  console.log(isEmployeesExisting)
 
   return (
     <PageWrapper>
       <EmployeesWrapper>{getEmployeesCards(createEmployees)}</EmployeesWrapper>
+
       <DeleteButtonControl>
-        <Button name="Remove all employees" onClick={deleteAllCards} isRed={true} />
+        {isEmployeesExisting && (
+          <Button
+            name="Remove all employees"
+            onClick={deleteAllCards}
+            isRed={true}
+          />
+        )}
       </DeleteButtonControl>
     </PageWrapper>
   )

@@ -51,7 +51,6 @@ function CreateEmployeeForm() {
     validateOnChange: false,
 
     onSubmit: (values, helpers) => {
-      //some function from store - дописана ниже 
       dispach(createEmployee(values))
       helpers.resetForm()
       console.log(values)

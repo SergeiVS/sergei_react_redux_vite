@@ -3,6 +3,7 @@ import { EmployeesSliceState } from "./types"
 import { createAppSlice } from "store/createAppSlice"
 import { PayloadAction } from "@reduxjs/toolkit"
 import { Employee } from "pages/EmployeeAppProject/Layout_Team_1/types"
+import { v4 } from "uuid"
 
 const employeeAppInitialState: EmployeesSliceState = {
   employees: [],
@@ -14,12 +15,17 @@ export const employeeAppSlice = createAppSlice({
   reducers: create => ({
     createEmployee: create.reducer(
       (state: EmployeesSliceState, action: PayloadAction<Employee>) => {
+        action.payload.id = v4()
+
         state.employees.push(action.payload)
+        console.log(action.payload.id)
       },
     ),
     deleteCard: create.reducer(
       (state: EmployeesSliceState, action: PayloadAction<Employee>) => {
-        state.employees.splice(state.employees.indexOf(action.payload), 1)
+        state.employees = state.employees.filter(
+          employeeObject => employeeObject.id !== action.payload.id,
+        )
       },
     ),
     deleteAllCards: create.reducer(() => employeeAppInitialState),

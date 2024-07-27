@@ -4,7 +4,7 @@ import { COLORS_TEAM_1 } from "pages/EmployeeAppProject/Layout_Team_1/styles";
 export const EmployeesCard = styled.div`
 display: flex;
   flex-direction: column;
-  width: 590px;
+  width: 550px;
   min-height: 441px;
   max-height: fit-content;
   padding: 60px;

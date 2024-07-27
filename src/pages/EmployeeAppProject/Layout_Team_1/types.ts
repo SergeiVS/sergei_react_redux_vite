@@ -1,14 +1,15 @@
-import { ReactNode } from "react";
+import { ReactNode } from "react"
 
 export interface LayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export interface Employee {
-  name: string ;
-  surName: string ;
-  age: number | string ;
-  jobPosition?: string ;
+  id?: any
+  name: string
+  surName: string
+  age: number | string
+  jobPosition?: string
 }
 export enum PagesPaths {
   HOME = "/",
