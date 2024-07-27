@@ -15,27 +15,27 @@ function Employees() {
     employees.map((emlpoyeeObj: Employee) => {
       return (
         <PageWrapper>
-        <EmployeesWrapper>
-        <Employees_Card
-          key={v4()}
-          name={emlpoyeeObj.name}
-          surName={emlpoyeeObj.surName}
-          age={emlpoyeeObj.age}
-          jobPosition={emlpoyeeObj.jobPosition}
-        /></EmployeesWrapper>
-        <DeleteButtonControl><Button name="Remove all employees" onClick={() => {}} disabled={!employees} isRed={true} /></DeleteButtonControl>
-         </PageWrapper>
+          <EmployeesWrapper>
+            <Employees_Card
+              key={v4()}
+              name={emlpoyeeObj.name}
+              surName={emlpoyeeObj.surName}
+              age={emlpoyeeObj.age}
+              jobPosition={emlpoyeeObj.jobPosition}
+            />
+          </EmployeesWrapper>
+          <DeleteButtonControl>
+            <Button
+              name="Remove all employees"
+              onClick={() => {}}
+              isRed={true}
+            />
+          </DeleteButtonControl>
+        </PageWrapper>
       )
     })
 
-  return (
-      <>
-      {getEmployeesCards(employees)}
-      </>
-    
-    
-   
-  )
+  return <>{getEmployeesCards(employees)}</>
 }
 
 export default Employees
