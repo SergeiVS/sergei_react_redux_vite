@@ -5,7 +5,7 @@ export interface LayoutProps {
 }
 
 export interface Employee {
-  id?: any
+  id?: string
   name: string
   surName: string
   age: number | string

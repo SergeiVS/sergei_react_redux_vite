@@ -53,7 +53,6 @@ function CreateEmployeeForm() {
     onSubmit: (values, helpers) => {
       dispach(createEmployee(values))
       helpers.resetForm()
-      console.log(values)
       setModalOpen(true)
     },
   })

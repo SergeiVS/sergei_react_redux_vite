@@ -7,7 +7,9 @@ import { EmployeesCard, TextDiv, TextLabel, TextContent } from "./styles"
 import { EmployeeCardProps } from "./types"
 
 function Employees_Card({ employee }: EmployeeCardProps) {
+
   const dispatch = useDispatch()
+  
   const deleteCard = () => {
     dispatch(employeesAppSliceAction.deleteCard(employee))
   }

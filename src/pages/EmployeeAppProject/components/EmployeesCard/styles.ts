@@ -17,7 +17,7 @@ display: flex;
 export const TextDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: 470px;
+  width: 100%;
   height: 65px;
   gap: 12px;
 `;

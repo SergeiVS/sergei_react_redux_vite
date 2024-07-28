@@ -1,21 +1,19 @@
-import { ReactNode, useContext } from "react"
+import { ReactNode } from "react"
+import { useAppSelector } from "store/hooks"
+import { useDispatch } from "react-redux"
+import { v4 } from "uuid"
 
-import Employees_Card from "../components/EmployeesCard/EmployeesCard"
+import Employees_Card from "pages/EmployeeAppProject/components/EmployeesCard/EmployeesCard"
 import Button from "components/Button/Button"
 
-// import { EmployeeAppContext } from "../contexts/EmployeeAppContext"
 import { PageWrapper, EmployeesWrapper, DeleteButtonControl } from "./styles"
-import { Employee } from "../Layout_Team_1/types"
-import { v4 } from "uuid"
+import { Employee } from "pages/EmployeeAppProject/Layout_Team_1/types"
 import {
   employeesAppSliceAction,
   employeesAppSliceSelectors,
 } from "store/redux/employees/employeesSlice"
-import { useAppSelector } from "store/hooks"
-import { useDispatch } from "react-redux"
 
 function Employees() {
-  // const { employees } = useContext(EmployeeAppContext)
   const dispach = useDispatch()
 
   const createEmployees = useAppSelector(employeesAppSliceSelectors.employees)
@@ -29,17 +27,14 @@ function Employees() {
       return <Employees_Card key={v4()} employee={emlpoyeeObj} />
     })
 
-  let isEmployeesExisting: boolean =
+  let areEmployeesExisting: boolean =
     useAppSelector(employeesAppSliceSelectors.employees).length !== 0
-
-  console.log(isEmployeesExisting)
 
   return (
     <PageWrapper>
       <EmployeesWrapper>{getEmployeesCards(createEmployees)}</EmployeesWrapper>
-
       <DeleteButtonControl>
-        {isEmployeesExisting && (
+        {areEmployeesExisting && (
           <Button
             name="Remove all employees"
             onClick={deleteAllCards}
