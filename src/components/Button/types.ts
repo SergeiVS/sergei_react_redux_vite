@@ -6,7 +6,7 @@ export interface ButtonProps {
   imgSrc?: string | undefined;
   type?: ButtonType;
   name: string;
-  onClick?: (event: MouseEvent) => void;
+  onClick?: (event: MouseEvent)=>void;
   disabled?: boolean;
   isRed?: boolean;
 }

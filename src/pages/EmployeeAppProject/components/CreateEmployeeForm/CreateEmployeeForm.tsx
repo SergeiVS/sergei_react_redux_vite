@@ -1,11 +1,10 @@
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { Alert } from "@mui/material"
 
 import Button from "components/Button/Button"
 import Input from "components/Input/Input"
-import { EmployeeAppContext } from "pages/EmployeeAppProject/contexts/EmployeeAppContext"
 
 import {
   UserDataFormContainer,
@@ -14,13 +13,14 @@ import {
 } from "./styles"
 import { Employee } from "pages/EmployeeAppProject/Layout_Team_1/types"
 import Modal from "components/Modal/Modal"
+import { employeesAppSliceAction } from "store/redux/employees/employeesSlice"
+import { useAppDispatch } from "store/hooks"
+import { FieldNames } from "./types"
 
 function CreateEmployeeForm() {
-  const employeeDataContext = useContext(EmployeeAppContext)
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
 
   const validationSchema = Yup.object().shape({
-    
     name: Yup.string()
       .required("Name field is required")
       .min(2, "Name field should contain minimum 2 symbols")
@@ -37,22 +37,23 @@ function CreateEmployeeForm() {
       "Job Position field should contain maximum 30 symobols",
     ),
   })
+
+  const dispach = useAppDispatch()
+  const createEmployee = employeesAppSliceAction.createEmployee
+
   const formik = useFormik<Employee>({
     initialValues: {
-      name: "",
+      FIELD_: "",
       surName: "",
       age: "",
       jobPosition: "",
     },
     validationSchema: validationSchema,
-    validateOnChange: true,
+    validateOnChange: false,
 
     onSubmit: (values, helpers) => {
-      employeeDataContext.setEmployees((prevValue: Employee[]) => {
-        return [...prevValue, values]
-      })
+      dispach(createEmployee(values))
       helpers.resetForm()
-      console.log(values)
       setModalOpen(true)
     },
   })
