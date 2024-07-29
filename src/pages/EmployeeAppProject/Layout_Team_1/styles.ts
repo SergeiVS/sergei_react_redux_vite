@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Collapse } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export enum COLORS_TEAM_1 {
