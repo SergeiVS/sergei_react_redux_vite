@@ -1,6 +1,5 @@
 import { ReactNode } from "react"
-import { useAppSelector } from "store/hooks"
-import { useDispatch } from "react-redux"
+import { useAppSelector, useAppDispatch } from "store/hooks"
 import { v4 } from "uuid"
 
 import Employees_Card from "pages/EmployeeAppProject/components/EmployeesCard/EmployeesCard"
@@ -14,7 +13,7 @@ import {
 } from "store/redux/employees/employeesSlice"
 
 function Employees() {
-  const dispach = useDispatch()
+  const dispach = useAppDispatch()
 
   const createEmployees = useAppSelector(employeesAppSliceSelectors.employees)
 
@@ -27,8 +26,7 @@ function Employees() {
       return <Employees_Card key={v4()} employee={emlpoyeeObj} />
     })
 
-  let areEmployeesExisting: boolean =
-    useAppSelector(employeesAppSliceSelectors.employees).length !== 0
+  let areEmployeesExisting: boolean = createEmployees.length !== 0
 
   return (
     <PageWrapper>

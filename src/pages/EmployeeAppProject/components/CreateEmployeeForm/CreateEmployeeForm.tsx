@@ -14,7 +14,8 @@ import {
 import { Employee } from "pages/EmployeeAppProject/Layout_Team_1/types"
 import Modal from "components/Modal/Modal"
 import { employeesAppSliceAction } from "store/redux/employees/employeesSlice"
-import { useDispatch } from "react-redux"
+import { useAppDispatch } from "store/hooks"
+import { FieldNames } from "./types"
 
 function CreateEmployeeForm() {
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
@@ -37,12 +38,12 @@ function CreateEmployeeForm() {
     ),
   })
 
-  const dispach = useDispatch()
+  const dispach = useAppDispatch()
   const createEmployee = employeesAppSliceAction.createEmployee
 
   const formik = useFormik<Employee>({
     initialValues: {
-      name: "",
+      FIELD_: "",
       surName: "",
       age: "",
       jobPosition: "",

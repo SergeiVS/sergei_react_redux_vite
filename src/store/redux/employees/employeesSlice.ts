@@ -12,11 +12,10 @@ export const employeeAppSlice = createAppSlice({
   name: "EMPLOYEE-APP",
   initialState: employeeAppInitialState,
   reducers: create => ({
-
     createEmployee: create.reducer(
       (state: EmployeesSliceState, action: PayloadAction<Employee>) => {
-        action.payload.id = v4()
-        state.employees.push(action.payload)
+        // action.payload.id = v4()
+        state.employees = [...state.employees, { ...action.payload, id: v4() }] //.push(action.payload)
       },
     ),
 
@@ -27,7 +26,7 @@ export const employeeAppSlice = createAppSlice({
         )
       },
     ),
-    
+
     deleteAllCards: create.reducer(() => employeeAppInitialState),
   }),
   selectors: { employees: (state: EmployeesSliceState) => state.employees },
@@ -35,5 +34,3 @@ export const employeeAppSlice = createAppSlice({
 
 export const employeesAppSliceAction = employeeAppSlice.actions
 export const employeesAppSliceSelectors = employeeAppSlice.selectors
-
-

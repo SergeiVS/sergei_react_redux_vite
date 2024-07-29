@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux"
+import { useAppDispatch } from "store/hooks"
 
 import Button from "components/Button/Button"
 import { employeesAppSliceAction } from "store/redux/employees/employeesSlice"
@@ -8,7 +8,7 @@ import { EmployeeCardProps } from "./types"
 
 function Employees_Card({ employee }: EmployeeCardProps) {
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   
   const deleteCard = () => {
     dispatch(employeesAppSliceAction.deleteCard(employee))
