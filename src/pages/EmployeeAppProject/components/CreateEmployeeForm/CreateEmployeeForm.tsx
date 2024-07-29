@@ -38,11 +38,14 @@ function CreateEmployeeForm() {
     ),
   })
   const formik = useFormik<Employee>({
+   
     initialValues: {
-      name: "",
-      surName: "",
-      age: "",
-      jobPosition: "",
+
+      [FieldNames.NAME]: "",
+      [FieldNames.SUR_NAME]: "",
+      [FieldNames.AGE]: "",
+      [FieldNames.JOB_POSITION]: "",
+
     },
     validationSchema: validationSchema,
     validateOnChange: true,
