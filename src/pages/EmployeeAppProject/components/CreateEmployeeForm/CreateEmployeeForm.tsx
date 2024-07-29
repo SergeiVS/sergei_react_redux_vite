@@ -42,21 +42,11 @@ function CreateEmployeeForm() {
   const createEmployee = employeesAppSliceAction.createEmployee
 
   const formik = useFormik<Employee>({
-   
     initialValues: {
-<<<<<<< HEAD
-
       [FieldNames.NAME]: "",
       [FieldNames.SUR_NAME]: "",
       [FieldNames.AGE]: "",
       [FieldNames.JOB_POSITION]: "",
-
-=======
-      FIELD_: "",
-      surName: "",
-      age: "",
-      jobPosition: "",
->>>>>>> c28a1ab317951a72c6b0fab38fe4eef382478751
     },
     validationSchema: validationSchema,
     validateOnChange: false,
