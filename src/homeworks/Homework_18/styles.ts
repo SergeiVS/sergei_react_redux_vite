@@ -16,6 +16,8 @@ export const JokesContainer = styled.div`
   min-height: 300px;
   max-height: 800px;
   overflow-y: auto;
+  padding: 10px;
+  background-color: whitesmoke;
 `
 export const JokeWrapper = styled.div`
   display: flex;
@@ -36,10 +38,6 @@ export const JokeLine = styled.div`
 
 export const DeleteButtonContainer = styled.div`
   min-width: 180px;
-  min-height: 70px;
-`
-export const DeleteAllButtonContainer = styled.div`
-  width: 100%;
   min-height: 70px;
 `
 

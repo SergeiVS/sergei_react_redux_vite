@@ -1,9 +1,12 @@
 import { v4 } from "uuid"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { Alert } from "@mui/material"
+
 import Button from "components/Button/Button"
+import Modal from "components/Modal/Modal"
+
 import {
   ButtonContainer,
-  DeleteAllButtonContainer,
   DeleteButtonContainer,
   JokeLine,
   JokePresenter,
@@ -20,25 +23,29 @@ import { RandomJoke } from "store/redux/randomJoke/types"
 
 function Homework_18() {
   const dispatch = useAppDispatch()
+
   const getJoke = () => {
     dispatch(randomJokeActions.getRandomJoke())
   }
 
-  const jokes = useAppSelector(randomJokeSelectors.randomJokes)
-  const error = useAppSelector(randomJokeSelectors.error)
-  const isPending = useAppSelector(randomJokeSelectors.isPending)
+  const { randomJokes, error, isPending } = useAppSelector(
+    randomJokeSelectors.jokesData,
+  )
+
+  const [isModalOpen, setModalOpen] = useState<boolean>(false)
 
   const deleteAllJokes = () => {
     dispatch(randomJokeActions.deleteAllJokes())
   }
 
-  const getJokeElements = jokes.map((joke: RandomJoke) => {
+  const getJokeElements = randomJokes.map((joke: RandomJoke, index: number) => {
     const deletejoke = () => {
       dispatch(randomJokeActions.deleteJoke(joke.id))
     }
     return (
       <JokeWrapper key={v4()}>
         <JokePresenter>
+          <JokeLine>{index + 1}</JokeLine>
           <JokeLine>{joke.setUp}</JokeLine>
           <JokeLine>{joke.punchLine}</JokeLine>
         </JokePresenter>
@@ -56,22 +63,23 @@ function Homework_18() {
 
   useEffect(() => {
     if (error) {
-      alert(error)
+      setModalOpen(true)
     }
   }, [error])
 
   return (
     <PageWrapperHW18>
-      <JokesContainer>
-        {getJokeElements}
-        {jokes.length > 0 && (
+      <ButtonContainer>
+        <Modal open={isModalOpen} onClose={() => setModalOpen(false)}>
+          <Alert severity="error">{error}</Alert>
+        </Modal>
+        {randomJokes.length > 0 && (
           <Button name="Delete All Jokes" isRed onClick={deleteAllJokes} />
         )}
-      </JokesContainer>
+      </ButtonContainer>
+      <JokesContainer>{getJokeElements}</JokesContainer>
       <ButtonContainer>
-        <DeleteAllButtonContainer>
-          <Button name="Get Joke" onClick={getJoke} disabled={isPending} />
-        </DeleteAllButtonContainer>
+        <Button name="Get Joke" onClick={getJoke} disabled={isPending} />
       </ButtonContainer>
     </PageWrapperHW18>
   )

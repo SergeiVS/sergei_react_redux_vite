@@ -57,9 +57,7 @@ export const randomJokeSlice = createAppSlice({
     }),
   }),
   selectors: {
-    randomJokes: (state: randomJokeSliceStates) => state.randomJokes,
-    error: (state: randomJokeSliceStates) => state.error,
-    isPending: (state: randomJokeSliceStates) => state.isPending,
+    jokesData: (state: randomJokeSliceStates) => state,
   },
 })
 
