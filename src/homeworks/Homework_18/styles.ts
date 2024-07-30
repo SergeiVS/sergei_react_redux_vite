@@ -2,7 +2,6 @@ import styled from "@emotion/styled"
 import { PageWrapperCss } from "styles/standartStyles"
 
 export const PageWrapperHW18 = styled.div`
-  position: relative;
   ${PageWrapperCss}
   gap: 20px;
   padding: 60px;
@@ -37,16 +36,11 @@ export const JokeLine = styled.div`
 
 export const DeleteButtonContainer = styled.div`
   min-width: 180px;
-  height: 70px;
+  min-height: 70px;
 `
-
-export const ButtonPositioner = styled.div`
-  position: fixed;
-  bottom: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const DeleteAllButtonContainer = styled.div`
   width: 100%;
+  min-height: 70px;
 `
 
 export const ButtonContainer = styled.div`

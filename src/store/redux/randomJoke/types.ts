@@ -1,4 +1,5 @@
 export interface randomJokeSliceStates {
+  isPending: boolean
   randomJokes: RandomJoke[]
   error: string | undefined
 }

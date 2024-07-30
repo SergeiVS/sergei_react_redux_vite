@@ -8,6 +8,7 @@ import { PayloadAction } from "@reduxjs/toolkit"
 const randomJokeInitialState: randomJokeSliceStates = {
   randomJokes: [],
   error: undefined,
+  isPending: false,
 }
 
 export const randomJokeSlice = createAppSlice({
@@ -24,6 +25,7 @@ export const randomJokeSlice = createAppSlice({
       {
         pending: (state: randomJokeSliceStates) => {
           state.error = undefined
+          state.isPending = true
         },
 
         fulfilled: (state: randomJokeSliceStates, action) => {
@@ -35,9 +37,11 @@ export const randomJokeSlice = createAppSlice({
               id: v4(),
             },
           ]
+          state.isPending = false
         },
         rejected: (state: randomJokeSliceStates, action) => {
           state.error = action.error.message
+          state.isPending = false
         },
       },
     ),
@@ -48,13 +52,17 @@ export const randomJokeSlice = createAppSlice({
         )
       },
     ),
+    deleteAllJokes: create.reducer((state: randomJokeSliceStates) => {
+      state.randomJokes = []
+    }),
   }),
   selectors: {
     randomJokes: (state: randomJokeSliceStates) => state.randomJokes,
     error: (state: randomJokeSliceStates) => state.error,
+    isPending: (state: randomJokeSliceStates) => state.isPending,
   },
 })
 
-export const randomeJokeActions = randomJokeSlice.actions
+export const randomJokeActions = randomJokeSlice.actions
 
-export const randomeJokeSelectors = randomJokeSlice.selectors
+export const randomJokeSelectors = randomJokeSlice.selectors
