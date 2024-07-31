@@ -1,4 +1,4 @@
-import { Global, css } from "@emotion/react";
+import { Global, css } from "@emotion/react"
 
 const globalAppStyles = css`
   * {
@@ -27,10 +27,10 @@ const globalAppStyles = css`
     flex-direction: column;
     min-height: 100%;
   }
-`;
+`
 
 function GlobalStyles() {
-  return <Global styles={globalAppStyles} />;
+  return <Global styles={globalAppStyles} />
 }
 
-export default GlobalStyles;
+export default GlobalStyles
