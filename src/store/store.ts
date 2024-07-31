@@ -1,19 +1,13 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
-import { counterSlice } from "store/redux/counter/counterSlice"
-import { feedbackSlice } from "./redux/feedback/feedbackSlyce"
-import { employeeAppSlice } from "./redux/employees/employeesSlice"
-import { catFactSlice } from "./redux/catFact/CatFactSlice"
-import { randomJokeSlice } from "./redux/randomJoke/randomJokeSlice"
+
+import { counteSlice } from "store/redux/counter/counterSlice"
+import { feedbackSlice } from "store/redux/feedback/feedbackSlice"
+import { catFactSlice } from "./redux/catFact/catFactSlice"
+
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(
-  counterSlice,
-  feedbackSlice,
-  employeeAppSlice,
-  catFactSlice,
-  randomJokeSlice,
-)
+const rootReducer = combineSlices(counteSlice, feedbackSlice, catFactSlice)
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>
 
@@ -24,7 +18,6 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
     reducer: rootReducer,
     preloadedState,
   })
-
   return store
 }
 
